@@ -3,6 +3,12 @@ drop table if exists tip_racuna cascade;
 drop table if exists klijent cascade;
 drop table if exists racun cascade;
 
+drop sequence if exists kredit;
+drop sequence if exists tip_racuna;
+drop sequence if exists klijent;
+drop sequence if exists racun;
+
+
 create table kredit 
 (
 	id integer not null,
@@ -18,8 +24,7 @@ create table tip_racuna
 	naziv varchar(100),
 	oznaka varchar(20),
 	opis varchar(500),
-	constraint pk_tip_racuna primary key (id) 
-
+	constraint pk_tip_racuna primary key (id) 	
 );
 
 create table klijent 
@@ -55,5 +60,15 @@ create index idpk_racun on racun(id);
 create index idfk_klijent_kredit on klijent(kredit);
 create index idfk_racun_tip_racuna on racun(tip_racuna);
 create index idfk_racun_klijent on racun(klijent);
+
+create sequence kredit_seq
+increment 1;
+create sequence klijent_seq
+increment 1;
+create sequence racun_seq
+increment 1;
+create sequence tip_racuna_seq
+increment 1;
+
 
 
