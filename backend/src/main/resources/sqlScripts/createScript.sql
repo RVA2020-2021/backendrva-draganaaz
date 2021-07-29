@@ -11,7 +11,7 @@ drop sequence if exists racun;
 
 create table kredit 
 (
-	id integer not null,
+	id integer not null default(nextval('kredit_seq')),	
 	naziv varchar(100),
 	oznaka varchar(20),
 	opis varchar(500),
@@ -20,7 +20,7 @@ create table kredit
 
 create table tip_racuna 
 (
-	id integer not null,
+	id integer not null default(nextval('tip_racuna_seq')),
 	naziv varchar(100),
 	oznaka varchar(20),
 	opis varchar(500),
@@ -29,7 +29,7 @@ create table tip_racuna
 
 create table klijent 
 (
-	id integer not null,
+	id integer not null default(nextval('klijent_seq')),
 	ime varchar(50),
 	prezime varchar(50),
 	broj_lk integer,
@@ -40,7 +40,7 @@ create table klijent
 
 create table racun 
 (
-	id integer not null,
+	id integer not null default(nextval('racun_seq')),
 	naziv varchar(100),
 	oznaka varchar(20),
 	opis varchar(500),

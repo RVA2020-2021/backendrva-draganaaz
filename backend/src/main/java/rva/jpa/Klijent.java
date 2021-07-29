@@ -3,6 +3,9 @@ package rva.jpa;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,7 +23,7 @@ public class Klijent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="KLIJENT_ID_GENERATOR", sequenceName="KLIJENT_SEQ", allocationSize = 1)
+	@SequenceGenerator(name="KLIJENT_ID_GENERATOR", sequenceName="klijent_seq", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KLIJENT_ID_GENERATOR")
 	private Integer id;
 
@@ -39,6 +42,8 @@ public class Klijent implements Serializable {
 	//bi-directional many-to-one association to Racun
 	@JsonIgnore
 	@OneToMany(mappedBy="klijent")
+	// When you delete Klijent row, it deletes the corresponding Klijent records in Racun
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Racun> racuns;
 
 	public Klijent() {

@@ -3,6 +3,9 @@ package rva.jpa;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,7 +24,7 @@ public class TipRacuna implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIP_RACUNA_ID_GENERATOR", sequenceName="TIP_RACUNA_SEQ", allocationSize = 1)
+	@SequenceGenerator(name="TIP_RACUNA_ID_GENERATOR", sequenceName="tip_racuna_seq", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIP_RACUNA_ID_GENERATOR")
 	private Integer id;
 
@@ -34,6 +37,7 @@ public class TipRacuna implements Serializable {
 	//bi-directional many-to-one association to Racun
 	@JsonIgnore
 	@OneToMany(mappedBy="tipRacuna")
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Racun> racuns;
 
 	public TipRacuna() {
