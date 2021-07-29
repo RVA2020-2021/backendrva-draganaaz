@@ -20,6 +20,7 @@ export class KlijentService {
   }
 
   addKlijent(klijent: Klijent): Observable<any> {
+    klijent.id=0;
     return this.httpClient.post(this.klijentEndpoint, klijent);
   }
 
@@ -27,7 +28,7 @@ export class KlijentService {
     return this.httpClient.put(this.klijentEndpoint, klijent);
   }
 
-  deleteArtikl(id: number): Observable<any> {
+  deleteKlijent(id: number): Observable<any> {
     return this.httpClient.delete(`${this.klijentEndpoint}/${id}`);
   }
 }

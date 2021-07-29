@@ -20,6 +20,7 @@ export class RacunService {
   }
 
   addRacun(racun: Racun): Observable<any> {
+    racun.id=0;
     return this.httpClient.post(this.racunEndpoint, racun);
   }
 

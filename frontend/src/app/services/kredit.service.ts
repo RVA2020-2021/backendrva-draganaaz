@@ -20,6 +20,7 @@ export class KreditService {
   }
 
   addKredit(kredit: Kredit): Observable<any> {
+    kredit.id=0;
     return this.httpClient.post(this.kreditEndpoint, kredit);
   }
 
@@ -27,7 +28,7 @@ export class KreditService {
     return this.httpClient.put(this.kreditEndpoint, kredit);
   }
 
-  deleteKlijent(id: number): Observable<any> {
+  deleteKredit(id: number): Observable<any> {
     return this.httpClient.delete(`${this.kreditEndpoint}/${id}`);
   }
 }

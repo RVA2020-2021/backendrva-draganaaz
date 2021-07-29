@@ -7,6 +7,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,6 +26,8 @@ import { KreditComponent } from './components/kredit/kredit.component';
 import { RacunComponent } from './components/racun/racun.component';
 import { TipRacunaComponent } from './components/tip-racuna/tip-racuna.component';
 import { PocetnaComponent } from './components/pocetna/pocetna.component';
+import { KreditDialogComponent } from './components/dialogs/kredit-dialog/kredit-dialog.component';
+import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog/tip-racuna-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +36,9 @@ import { PocetnaComponent } from './components/pocetna/pocetna.component';
     KreditComponent,
     RacunComponent,
     TipRacunaComponent,
-    PocetnaComponent
+    PocetnaComponent,
+    KreditDialogComponent,
+    TipRacunaDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +48,17 @@ import { PocetnaComponent } from './components/pocetna/pocetna.component';
     MatIconModule,
     MatExpansionModule,
     MatListModule,
-
+    MatFormFieldModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatTableModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatDialogModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
