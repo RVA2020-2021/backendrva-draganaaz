@@ -24,28 +24,38 @@ export class KreditDialogComponent implements OnInit {
   public addKredit(): void {
     this.kreditService.addKredit(this.dataDialog).subscribe(() => {
       this.snackBar.open('Kredit uspešno dodat.' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.closeDialog();
     }), (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+      this.closeDialog();
     };
   }
 
   public updateKredit(): void {
     this.kreditService.updateKredit(this.dataDialog).subscribe(() => {
       this.snackBar.open('Kredit uspešno izmenjen.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.closeDialog();
     }), (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-    };
+      this.closeDialog();
+    }
   }
 
   public deleteKredit(): void {
     this.kreditService.deleteKredit(this.dataDialog.id).subscribe(() => {
       this.snackBar.open('Kredit uspešno obrisan.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.closeDialog();
     }), (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+      this.closeDialog();
     };
+  }
+
+  private closeDialog(){
+    this.dialogRef.close(1);
   }
 
   public cancel(): void {

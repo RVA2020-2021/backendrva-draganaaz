@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import rva.jpa.Klijent;
 import rva.jpa.Racun;
+import rva.repository.KlijentRepository;
 import rva.repository.RacunRepository;
 
 @CrossOrigin
@@ -30,6 +32,9 @@ public class RacunRestController {
 	
 	@Autowired
 	private RacunRepository racunRepository;
+	
+	@Autowired
+	private KlijentRepository klijentRepository;
 	
 	@GetMapping("racun")
 	@ApiOperation( value = "Returns racun")
@@ -48,6 +53,13 @@ public class RacunRestController {
 	public Collection<Racun> getRacunByName(@PathVariable("naziv") String naziv) {
 		return racunRepository.findByNazivContainingIgnoreCase(naziv);
 	}
+	
+	//id is client id and not racun's ID
+		@GetMapping("racuniZaKlijenta/{id}")
+		public Collection<Racun> getRacuniZaKlijenta(@PathVariable("id") Integer id){
+			Klijent k = klijentRepository.getOne(id);
+			return racunRepository.findByKlijent(k);
+		}
 
 	@PostMapping("racun")
 	@ApiOperation( value = "Creates racun")

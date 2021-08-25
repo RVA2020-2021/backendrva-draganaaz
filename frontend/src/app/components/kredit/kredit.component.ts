@@ -18,7 +18,7 @@ export class KreditComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  displayedColumns = ['id', 'naziv', 'oznaka', 'opis', 'action'];
+  displayedColumns = ['id', 'naziv', 'oznaka', 'opis', 'actions'];
   dataSource: MatTableDataSource<Kredit>;
   subscription: Subscription;
 
@@ -31,7 +31,6 @@ export class KreditComponent implements OnInit {
   public loadData() {
     this.subscription = this.kreditService.getAllKredits()
       .subscribe(res => {
-        console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -48,16 +47,16 @@ export class KreditComponent implements OnInit {
     const dialogRef = this.dialog.open(KreditDialogComponent, { data: { id, naziv, oznaka, opis } });
     dialogRef.componentInstance.flag = flag;
 
-    dialogRef.afterClosed().subscribe(res => {
-      if (res === 1) {
-        // re-load data to update UI after changes
+    dialogRef.afterClosed().subscribe((res) => {
+      // re-load data to update UI after changes
+      if (res) {
         this.loadData();
       }
     })
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe;
+    this.subscription.unsubscribe();
   }
 
 }

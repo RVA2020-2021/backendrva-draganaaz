@@ -6,7 +6,7 @@
 .mat-form-field {
   font-size: 14px;
   flex-grow: 1;
-  margin-top: 8px;
+  margin: 1%
 }
 
 .no-result {
@@ -14,29 +14,13 @@
   justify-content: center;
   padding: 14px;
   font-size: 14px;
-  font-style:  italic;
-}
-
-.mat-cell:nth-child(1),
-.mat-header-cell:nth-child(1){
-  flex: 0 0 5%;
-}
-
-.mat-cell:nth-child(2),
-.mat-header-cell:nth-child(2){
-  flex: 0 0 40%;
-}
-
-.mat-cell:nth-child(3),
-.mat-header-cell:nth-child(3){
-  flex: 0 0 20%;
-}
-
-.mat-cell:nth-child(4),
-.mat-header-cell:nth-child(4){
-  flex: 0 0 15%;
+  font-style: italic;
 }
 
 .title-center {
   margin: 0 auto;
+}
+
+input {
+  margin-top: 4px;
 }

@@ -18,7 +18,7 @@ export class TipRacunaComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  displayedColumns = ['id', 'naziv', 'oznaka', 'opis', 'action'];
+  displayedColumns = ['id', 'naziv', 'oznaka', 'opis', 'actions'];
   dataSource: MatTableDataSource<TipRacuna>;
   subscription: Subscription;
 
@@ -47,16 +47,15 @@ export class TipRacunaComponent implements OnInit {
     const dialogRef = this.dialog.open(TipRacunaDialogComponent, { data: { id, naziv, oznaka, opis } });
     dialogRef.componentInstance.flag = flag;
 
-    dialogRef.afterClosed().subscribe(res => {
-      if (res === 1) {
-        // re-load data to update UI after changes
+    dialogRef.afterClosed().subscribe((res) => {
+      // re-load data to update UI after changes
+      if (res)
         this.loadData();
-      }
     })
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe;
+    this.subscription.unsubscribe();
   }
 
 }

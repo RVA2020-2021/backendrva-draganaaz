@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 // Components
 import { AppComponent } from './app.component';
@@ -28,6 +29,8 @@ import { TipRacunaComponent } from './components/tip-racuna/tip-racuna.component
 import { PocetnaComponent } from './components/pocetna/pocetna.component';
 import { KreditDialogComponent } from './components/dialogs/kredit-dialog/kredit-dialog.component';
 import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog/tip-racuna-dialog.component';
+import { KlijentDialogComponent } from './components/dialogs/klijent-dialog/klijent-dialog.component';
+import { RacunDialogComponent } from './components/dialogs/racun-dialog/racun-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog
     PocetnaComponent,
     KreditDialogComponent,
     TipRacunaDialogComponent,
+    KlijentDialogComponent,
+    RacunDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,8 @@ import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog
     MatDialogModule,
     FormsModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

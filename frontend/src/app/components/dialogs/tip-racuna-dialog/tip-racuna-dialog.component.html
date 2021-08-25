@@ -24,11 +24,11 @@
     </div>
 
     <div mat-dialog-actions>
-      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit" [mat-dialog-close]="1"
+      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit"
         (click)="addTipRacuna()" [disabled]="!formControl.valid">Sačuvaj</button>
-      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit" [mat-dialog-close]="1"
+      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit"
         (click)="updateTipRacuna()" [disabled]="!formControl.valid">Sačuvaj</button>
-      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit" [mat-dialog-close]="1"
+      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit"
         (click)="deleteTipRacuna()">Obriši</button>
       <button mat-button (click)="cancel()">Poništi</button>
     </div>

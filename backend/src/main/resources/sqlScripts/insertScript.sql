@@ -44,13 +44,13 @@ insert into klijent (id, ime, prezime, broj_lk, kredit)
 values (nextval('klijent_seq'), 'Ana', 'Anic', 2, 2);
 
 insert into klijent (id, ime, prezime, broj_lk, kredit)
-values (nextval('klijent_seq'), 'Milica', 'Peric', 3, 1);
+values (nextval('klijent_seq'), 'Milica', 'Peric', 3, 5);
 
 insert into klijent (id, ime, prezime, broj_lk, kredit)
-values (nextval('klijent_seq'), 'Maja', 'Andjelic', 5, 2);
+values (nextval('klijent_seq'), 'Maja', 'Andjelic', 5, 4);
 
 insert into klijent (id, ime, prezime, broj_lk, kredit)
-values (nextval('klijent_seq'), 'Katarina', 'Radojic', 4, 1);
+values (nextval('klijent_seq'), 'Katarina', 'Radojic', 4, 3);
 
 insert into klijent (id, ime, prezime, broj_lk, kredit)
 values (-100, 'test', 'test', 2, 1);
@@ -69,7 +69,7 @@ insert into racun (id, naziv, oznaka, opis, tip_racuna, klijent)
 values (nextval('racun_seq'), 'Naziv 4', 'Oznaka 4', 'Opis 4', 2, 3);
 
 insert into racun (id, naziv, oznaka, opis, tip_racuna, klijent)
-values (nextval('racun_seq'), 'Naziv 5', 'Oznaka 5', 'Opis 5', 5, 1);
+values (nextval('racun_seq'), 'Naziv 5', 'Oznaka 5', 'Opis 5', 5, 4);
 
 insert into racun (id, naziv, oznaka, opis, tip_racuna, klijent)
 values (-100, 'test', 'test', 'test', 1, 2);

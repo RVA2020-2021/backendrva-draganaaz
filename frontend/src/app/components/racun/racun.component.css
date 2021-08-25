@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin: 1%
+}
+
+.no-result {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.title-center {
+  margin: 0 auto;
+}
+
+input {
+  margin-top: 4px;
+}

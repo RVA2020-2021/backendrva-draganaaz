@@ -78,7 +78,7 @@ public class TipRacunaRestController {
 		tipRacunaRepository.deleteById(id);
 		if (id == -100) {
 			jdbcTemplate.execute(
-					"insert into \"tipRacuna\" (\"id\", \"naziv\", \"oznaka\", \"opis\")"
+					"insert into \"tip_racuna\" (\"id\", \"naziv\", \"oznaka\", \"opis\")"
 					+ "values (-100, 'test', 'test', 'test')"
 			);
 			

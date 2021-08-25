@@ -4,6 +4,6 @@ export interface Klijent {
   id: number;
   ime: string;
   prezime: string;
-  brojLK: number;
+  brojLk: number;
   kredit: Kredit;
 }

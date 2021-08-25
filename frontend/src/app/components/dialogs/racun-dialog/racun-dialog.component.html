@@ -1,0 +1,48 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje računa: </h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Izmena računa: {{dataDialog.naziv}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje računa: {{dataDialog.naziv}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Naziv" [(ngModel)]="dataDialog.naziv" name="naziv" [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Oznaka" [(ngModel)]="dataDialog.oznaka" name="oznaka" [disabled]="flag == 3"
+          required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Opis" [(ngModel)]="dataDialog.opis" name="opis"
+          [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <mat-select [(ngModel)]="dataDialog.tipRacuna" placeholder="Kredit" name="kredit" [compareWith]="compareTo"
+          [disabled]="flag == 3">
+          <mat-option *ngFor="let tipRacuna of tipoviRacuna" [value]="tipRacuna">
+            {{ tipRacuna.naziv }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit"
+        (click)="addRacun()" [disabled]="!formControl.valid">Sačuvaj</button>
+      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit"
+        (click)="updateRacun()" [disabled]="!formControl.valid">Sačuvaj</button>
+      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit"
+        (click)="deleteRacun()">Obriši</button>
+      <button mat-button (click)="cancel()">Poništi</button>
+    </div>
+  </form>
+</div>

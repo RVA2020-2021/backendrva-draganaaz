@@ -24,11 +24,11 @@
     </div>
 
     <div mat-dialog-actions>
-      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit" [mat-dialog-close]="1" (click)="addKredit()"
+      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit" (click)="addKredit()"
         [disabled]="!formControl.valid">Sačuvaj</button>
-      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit" [mat-dialog-close]="1" (click)="updateKredit()"
+      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit" (click)="updateKredit()"
         [disabled]="!formControl.valid">Sačuvaj</button>
-      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit" [mat-dialog-close]="1" (click)="deleteKredit()">Obriši</button>
+      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit" (click)="deleteKredit()">Obriši</button>
       <button mat-button (click)="cancel()">Poništi</button>
     </div>
   </form>

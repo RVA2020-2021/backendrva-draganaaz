@@ -10,13 +10,15 @@ import { Racun } from '../models/Racun';
 
 export class RacunService {
   racunEndpoint: string;
+  racuniZaKlijentaEndpoint: string;
 
   constructor(private httpClient: HttpClient) {
     this.racunEndpoint = `${environment.apiBaseUrl}/racun`;
+    this.racuniZaKlijentaEndpoint = `${environment.apiBaseUrl}/racuniZaKlijenta`;
   }
 
-  getAllRacuns(): Observable<any> {
-    return this.httpClient.get(this.racunEndpoint);
+  getRacunByKlijent(idKlijenta: number): Observable<any> {
+    return this.httpClient.get(`${this.racuniZaKlijentaEndpoint}/${idKlijenta}`);
   }
 
   addRacun(racun: Racun): Observable<any> {

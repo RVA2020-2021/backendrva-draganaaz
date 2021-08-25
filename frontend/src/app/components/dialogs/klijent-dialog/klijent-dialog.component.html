@@ -1,0 +1,48 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje klijenta: </h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Izmena klijenta: {{dataDialog.ime}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje klijenta: {{dataDialog.ime}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Ime" [(ngModel)]="dataDialog.ime" name="ime" [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Prezime" [(ngModel)]="dataDialog.prezime" name="prezime" [disabled]="flag == 3"
+          required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Broj lične karte" [(ngModel)]="dataDialog.brojLk" name="brojLk"
+          [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <mat-select [(ngModel)]="dataDialog.kredit" placeholder="Kredit" name="kredit" [compareWith]="compareTo"
+          [disabled]="flag == 3">
+          <mat-option *ngFor="let kredit of krediti" [value]="kredit">
+            {{ kredit.naziv }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit"
+        (click)="addKlijent()" [disabled]="!formControl.valid">Sačuvaj</button>
+      <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit"
+        (click)="updateKlijent()" [disabled]="!formControl.valid">Sačuvaj</button>
+      <button mat-raised-button color="accent" *ngIf="flag == 3" type="submit"
+        (click)="deleteKlijent()">Obriši</button>
+      <button mat-button (click)="cancel()">Poništi</button>
+    </div>
+  </form>
+</div>
