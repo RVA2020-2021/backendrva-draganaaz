@@ -47,10 +47,10 @@ export class RacunComponent implements OnInit, OnDestroy {
         };
         // sortiranje po nazivu ugnježdenog objekta
         this.dataSource.sortingDataAccessor = (data, property) => {
-          switch (property) {
-            case 'tipRacuna': return data.tipRacuna.naziv.toLocaleLowerCase();
-            default: return data[property];
+          if (property === 'tipRacuna') {
+            return data.tipRacuna.naziv.toLocaleLowerCase();
           }
+          return data[property];
         };
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

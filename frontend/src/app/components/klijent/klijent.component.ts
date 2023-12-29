@@ -46,10 +46,10 @@ export class KlijentComponent implements OnInit {
         };
         // sortiranje po nazivu ugnježdenog objekta
         this.dataSource.sortingDataAccessor = (data, property) => {
-          switch (property) {
-            case 'kredit': return data.kredit.naziv.toLocaleLowerCase();
-            default: return data[property];
+          if (property === 'kredit') {
+            return data.kredit.naziv.toLocaleLowerCase();
           }
+          return data[property];
         };
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
