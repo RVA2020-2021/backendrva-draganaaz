@@ -27,10 +27,10 @@ export class KlijentDialogComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.kreditService.getAllKredits().subscribe(data => {
       this.krediti = data;
-    }),
+    },
       (error: Error) => {
         console.log(error.name + ' ' + error.message);
-      };
+      });
   }
 
   compareTo(a, b) {
@@ -39,35 +39,35 @@ export class KlijentDialogComponent implements OnInit {
 
   public addKlijent(): void {
     this.klijentService.addKlijent(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Klijent uspešno dodat.' + this.dataDialog.ime, 'OK', { duration: 2500 })
+      this.snackBar.open('Klijent uspešno dodat.' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public updateKlijent(): void {
     this.klijentService.updateKlijent(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Klijent uspešno izmenjen.: ' + this.dataDialog.ime, 'OK', { duration: 2500 })
+      this.snackBar.open('Klijent uspešno izmenjen.: ' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public deleteKlijent(): void {
     this.klijentService.deleteKlijent(this.dataDialog.id).subscribe(() => {
-      this.snackBar.open('Klijent uspešno obrisan.: ' + this.dataDialog.ime, 'OK', { duration: 2500 })
+      this.snackBar.open('Klijent uspešno obrisan.: ' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   private closeDialog() {

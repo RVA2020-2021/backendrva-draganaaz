@@ -36,7 +36,6 @@ export class RacunComponent implements OnInit, OnDestroy {
     this.subscription = this.racunService.getRacunByKlijent(this.selektovaniKlijent.id)
       .subscribe(res => {
         this.dataSource = new MatTableDataSource(res);
-
         // pretraga po nazivu ugnježdenog objekta
         this.dataSource.filterPredicate = (data: any, filter: string) => {
           const accumulator = (currentTerm: any, key: any) => {
@@ -46,7 +45,6 @@ export class RacunComponent implements OnInit, OnDestroy {
           const transformedFilter = filter.trim().toLowerCase();
           return dataStr.indexOf(transformedFilter) !== -1;
         };
-
         // sortiranje po nazivu ugnježdenog objekta
         this.dataSource.sortingDataAccessor = (data, property) => {
           switch (property) {
@@ -54,11 +52,11 @@ export class RacunComponent implements OnInit, OnDestroy {
             default: return data[property];
           }
         };
-
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-      }),
-      (error: Error) => { console.log(error.name + ' ' + error.message) }
+      }, (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      });
   }
 
   public openDialog(flag: number, id?: number, naziv?: string, oznaka?: string, opis?: number, tipRacuna?: TipRacuna, klijent?: Klijent): void {

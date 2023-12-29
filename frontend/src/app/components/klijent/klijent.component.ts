@@ -35,7 +35,6 @@ export class KlijentComponent implements OnInit {
     this.subscription = this.klijentService.getAllKlijents()
       .subscribe(res => {
         this.dataSource = new MatTableDataSource(res);
-
         // pretraga po nazivu ugnježdenog objekta
         this.dataSource.filterPredicate = (data: any, filter: string) => {
           const accumulator = (currentTerm: any, key: any) => {
@@ -45,7 +44,6 @@ export class KlijentComponent implements OnInit {
           const transformedFilter = filter.trim().toLowerCase();
           return dataStr.indexOf(transformedFilter) !== -1;
         };
-
         // sortiranje po nazivu ugnježdenog objekta
         this.dataSource.sortingDataAccessor = (data, property) => {
           switch (property) {
@@ -53,11 +51,11 @@ export class KlijentComponent implements OnInit {
             default: return data[property];
           }
         };
-
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-      }),
-      (error: Error) => { console.log(error.name + ' ' + error.message) }
+      }, (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      });
   }
 
   public openDialog(flag: number, id?: number, ime?: string, prezime?: string, brojLk?: number, kredit?: Kredit): void {

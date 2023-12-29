@@ -24,53 +24,52 @@ export class RacunDialogComponent implements OnInit {
     public tipRacunaService: TipRacunaService,
     @Inject(MAT_DIALOG_DATA) public dataDialog: Racun) { }
 
-    ngOnInit(): void {
-      this.subscription=this.tipRacunaService.getAllTipRacunas().subscribe(data => {
-        this.tipoviRacuna=data;
-      }),
-      (error: Error) => {
-        console.log(error.name+' '+error.message);
-      };
-    }
+  ngOnInit(): void {
+    this.subscription = this.tipRacunaService.getAllTipRacunas().subscribe(data => {
+      this.tipoviRacuna = data;
+    }, (error: Error) => {
+      console.log(error.name + ' ' + error.message);
+    });
+  }
 
-    compareTo(a,b){
-      return a.id==b.id;
-    }
+  compareTo(a, b) {
+    return a.id == b.id;
+  }
 
   public addRacun(): void {
     this.racunService.addRacun(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Račun uspešno dodat.' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Račun uspešno dodat: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public updateRacun(): void {
     this.racunService.updateRacun(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Račun uspešno izmenjen.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Račun uspešno izmenjen: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public deleteRacun(): void {
     this.racunService.deleteRacun(this.dataDialog.id).subscribe(() => {
-      this.snackBar.open('Račun uspešno obrisan.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Račun uspešno obrisan: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
-  private closeDialog(){
+  private closeDialog() {
     this.dialogRef.close(1);
   }
 

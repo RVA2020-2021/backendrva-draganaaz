@@ -24,38 +24,38 @@ export class TipRacunaDialogComponent implements OnInit {
 
   public addTipRacuna(): void {
     this.tipRacunaService.addTipRacuna(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Tip računa uspešno dodat.' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Tip računa uspešno dodat: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public updateTipRacuna(): void {
     this.tipRacunaService.updateTipRacuna(this.dataDialog).subscribe(() => {
-      this.snackBar.open('Tip računa uspešno izmenjen.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Tip računa uspešno izmenjen: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
   public deleteTipRacuna(): void {
     this.tipRacunaService.deleteTipRacuna(this.dataDialog.id).subscribe(() => {
-      this.snackBar.open('Tip računa uspešno obrisan.: ' + this.dataDialog.naziv, 'OK', { duration: 2500 })
+      this.snackBar.open('Tip računa uspešno obrisan: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
-    }), (error: Error) => {
+    }, (error: Error) => {
       console.log(error.name + ' ' + error.message);
       this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
       this.closeDialog();
-    };
+    });
   }
 
-  private closeDialog(){
+  private closeDialog() {
     this.dialogRef.close(1);
   }
 

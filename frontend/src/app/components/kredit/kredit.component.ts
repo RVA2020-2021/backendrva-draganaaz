@@ -34,8 +34,9 @@ export class KreditComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-      }),
-      (error: Error) => { console.log(error.name, error.message) }
+      }, (error: Error) => {
+        console.log(error.name, error.message);
+      });
   }
 
   applyFilter(filterValue: string) {
