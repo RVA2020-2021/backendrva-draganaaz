@@ -37,14 +37,18 @@ export class KlijentDialogComponent implements OnInit {
     return a.id == b.id;
   }
 
+  private handleError(error): void {
+    console.log(error.name + ' ' + error.message);
+    this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+    this.closeDialog();
+  }
+
   public addKlijent(): void {
     this.klijentService.addKlijent(this.dataDialog).subscribe(() => {
       this.snackBar.open('Klijent uspešno dodat.' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -53,9 +57,7 @@ export class KlijentDialogComponent implements OnInit {
       this.snackBar.open('Klijent uspešno izmenjen.: ' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -64,9 +66,7 @@ export class KlijentDialogComponent implements OnInit {
       this.snackBar.open('Klijent uspešno obrisan.: ' + this.dataDialog.ime, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 

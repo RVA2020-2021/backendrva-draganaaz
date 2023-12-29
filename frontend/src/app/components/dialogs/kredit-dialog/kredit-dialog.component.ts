@@ -21,14 +21,18 @@ export class KreditDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private handleError(error): void {
+    console.log(error.name + ' ' + error.message);
+    this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+    this.closeDialog();
+  }
+
   public addKredit(): void {
     this.kreditService.addKredit(this.dataDialog).subscribe(() => {
       this.snackBar.open('Kredit uspešno dodat: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -37,9 +41,7 @@ export class KreditDialogComponent implements OnInit {
       this.snackBar.open('Kredit uspešno izmenjen: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -48,9 +50,7 @@ export class KreditDialogComponent implements OnInit {
       this.snackBar.open('Kredit uspešno obrisan: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 

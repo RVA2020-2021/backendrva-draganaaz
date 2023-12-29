@@ -36,14 +36,18 @@ export class RacunDialogComponent implements OnInit {
     return a.id == b.id;
   }
 
+  private handleError(error): void {
+    console.log(error.name + ' ' + error.message);
+    this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+    this.closeDialog();
+  }
+
   public addRacun(): void {
     this.racunService.addRacun(this.dataDialog).subscribe(() => {
       this.snackBar.open('Račun uspešno dodat: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -52,9 +56,7 @@ export class RacunDialogComponent implements OnInit {
       this.snackBar.open('Račun uspešno izmenjen: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -63,9 +65,7 @@ export class RacunDialogComponent implements OnInit {
       this.snackBar.open('Račun uspešno obrisan: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 

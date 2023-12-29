@@ -22,14 +22,18 @@ export class TipRacunaDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private handleError(error): void {
+    console.log(error.name + ' ' + error.message);
+    this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
+    this.closeDialog();
+  }
+
   public addTipRacuna(): void {
     this.tipRacunaService.addTipRacuna(this.dataDialog).subscribe(() => {
       this.snackBar.open('Tip računa uspešno dodat: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -38,9 +42,7 @@ export class TipRacunaDialogComponent implements OnInit {
       this.snackBar.open('Tip računa uspešno izmenjen: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
@@ -49,9 +51,7 @@ export class TipRacunaDialogComponent implements OnInit {
       this.snackBar.open('Tip računa uspešno obrisan: ' + this.dataDialog.naziv, 'OK', { duration: 2500 });
       this.closeDialog();
     }, (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-      this.snackBar.open('Došlo je do greške, pokušajte ponovo kasnije.', 'Zatvori', { duration: 2500 });
-      this.closeDialog();
+      this.handleError(error);
     });
   }
 
